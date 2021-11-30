@@ -1,0 +1,11 @@
+.tic-tac-toe-gameboard{
+    display: grid;
+    grid-template-rows:100px 100px 100px ;
+    grid-template-columns: 100px 100px 100px;
+}
+
+.square{
+    background-color: rosybrown;
+    border: 1px solid #444;
+
+}
