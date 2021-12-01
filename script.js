@@ -55,10 +55,10 @@ Array.from(squareElements).forEach((square, index)=>{
 
         //loop currentBoard thru the 8 winning conditions and if one hits return true
         currentBoard.forEach((square)=>{
-            if (square.player == "O"){
+            if (square.player == "O"){ //if it says "o" then push it to o array 
                 o_Array.push(square.cell);
             }
-            if(square.player == "X"){
+            if(square.player == "X"){ //if it says "x" then push it to x array 
                 x_Array.push(square.cell);
             }
         });
@@ -79,7 +79,7 @@ Array.from(squareElements).forEach((square, index)=>{
             window.alert("o is the winner");
             }
             else if (
-            firstCombo.every((current)=> x_Array.includes(current))||
+            firstCombo.every((current)=> x_Array.includes(current))|| //current value for array  compare to x array to check to see if includes the current value [0]->[1]->[2] returns true or false
             secondCombo.every((current)=> x_Array.includes(current))||
             thirdCombo.every((current)=> x_Array.includes(current))||
             fourthCombo.every((current)=> x_Array.includes(current))||
@@ -90,28 +90,30 @@ Array.from(squareElements).forEach((square, index)=>{
             ){
                  window.alert("x is the winner");
              }
-         else if ( 
-             secondCombo.every((current)=> x_Array.includes(current))
-            // thirdCombo.every((current)=> x_Array.includes(current)) ||
-            // fourthCombo.every((current)=> x_Array.includes(current)) ||
-            // fithCombo.every((current)=> x_Array.includes(current)) ||
-            // sixthCombo.every((current)=> x_Array.includes(current)) ||   
-            // seventhCombo.every((current)=> x_Array.includes(current)) ||
-            // eigthCombo.every((current)=> x_Array.includes(current)) || 
+    //      else if(
+    //         firstCombo.every((current)=> !x_Array.includes(current)) ||
+    //         secondCombo.every((current)=> !x_Array.includes(current))||
+    //         thirdCombo.every((current)=> !x_Array.includes(current)) ||
+    //         fourthCombo.every((current)=> !x_Array.includes(current)) ||
+    //         fithCombo.every((current)=> !x_Array.includes(current)) ||
+    //         sixthCombo.every((current)=> !x_Array.includes(current)) ||   
+    //         seventhCombo.every((current)=> !x_Array.includes(current)) ||
+    //         eigthCombo.every((current)=> !x_Array.includes(current)) || 
 
-            // firstCombo.every((current)=> o_Array.includes(current)) ||
-            // secondCombo.every((current)=> o_Array.includes(current)) ||
-            // thirdCombo.every((current)=> o_Array.includes(current)) ||
-            // fourthCombo.every((current)=> o_Array.includes(current)) ||
-            // fithCombo.every((current)=> o_Array.includes(current)) ||
-            // sixthCombo.every((current)=> o_Array.includes(current)) ||   
-            // seventhCombo.every((current)=> o_Array.includes(current)) ||
-            // eigthCombo.every((current)=> o_Array.includes(current)) 
+    //         firstCombo.every((current)=> !o_Array.includes(current)) ||
+    //         secondCombo.every((current)=> !o_Array.includes(current)) ||
+    //         thirdCombo.every((current)=> !o_Array.includes(current)) ||
+    //         fourthCombo.every((current)=> !o_Array.includes(current)) ||
+    //         fithCombo.every((current)=> !o_Array.includes(current)) ||
+    //         sixthCombo.every((current)=> !o_Array.includes(current)) ||   
+    //         seventhCombo.every((current)=> !o_Array.includes(current)) ||
+    //         eigthCombo.every((current)=> !o_Array.includes(current)) 
         
-         ){
-             console.log("is draw");
-             window.alert("draw");       
-            }
+    //   )
+    // {
+             
+    //         window.alert("Draw")    
+    //   }
       
     
 })
