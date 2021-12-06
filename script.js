@@ -6,6 +6,15 @@ console.log("squareElements: ", squareElements);
 const player_x = "X";
 const player_o = "O";
 
+function isGameOver(currentBoard){
+for(var i =0; i<9; i++){
+    if(currentBoard[i].player===null){
+        return false
+    }
+}
+return true;
+}
+
 let currentPlayer = player_x;
 
 //array of state of board
@@ -31,7 +40,7 @@ Array.from(squareElements).forEach((square, index)=>{
     square.addEventListener("click", ()=>{
         console.log("clicked");
 
-       if (!square[index]){
+       if (!square[index]){ //if nothing is in square index then in that square index add input for current player
         square[index] = currentPlayer;
         console.log(index);
 
@@ -51,7 +60,38 @@ Array.from(squareElements).forEach((square, index)=>{
                const sixthCombo = [2,5,8];
                const seventhCombo = [0,4,8];
                const eigthCombo = [2,4,6];
+
+            let allCombos=[
+                [0,1,2],
+                [3,4,5],
+                [6,7,8],
+                [0,3,6],
+                [1,4,7],
+                [2,5,8],
+                [0,4,8],
+                [2,4,6]
+            ];
          
+            function xWins(allCombos, x_Array){
+                for(let i = 0; i<allCombos.length; i++){
+                    if( allCombos[i].every((current)=> x_Array.includes(current))){
+                        return true
+                    }
+                }
+                return false
+
+            }
+
+            function oWins(allCombos, o_Array){
+                for(let i = 0; i<allCombos.length; i++){
+                    if( allCombos[i].every((current)=> o_Array.includes(current))){
+                        return true 
+                    }
+                }
+                return false
+
+            }
+
 
         //loop currentBoard thru the 8 winning conditions and if one hits return true
         currentBoard.forEach((square)=>{
@@ -66,56 +106,22 @@ Array.from(squareElements).forEach((square, index)=>{
         console.log("o_Array: ", o_Array);
         console.log("x_Array: ", x_Array);
 
-        if(
-            firstCombo.every((current)=> o_Array.includes(current))||
-            secondCombo.every((current)=> o_Array.includes(current))||
-            thirdCombo.every((current)=> o_Array.includes(current))||
-            fourthCombo.every((current)=> o_Array.includes(current))||
-            fithCombo.every((current)=> o_Array.includes(current))||
-            sixthCombo.every((current)=> o_Array.includes(current))||
-            seventhCombo.every((current)=> o_Array.includes(current))||
-            eigthCombo.every((current)=> o_Array.includes(current))
-        ) {
+        if(  oWins(allCombos, o_Array) ) {
+        
             window.alert("o is the winner");
             }
-            else if (
-            firstCombo.every((current)=> x_Array.includes(current))|| //current value for array  compare to x array to check to see if includes the current value [0]->[1]->[2] returns true or false
-            secondCombo.every((current)=> x_Array.includes(current))||
-            thirdCombo.every((current)=> x_Array.includes(current))||
-            fourthCombo.every((current)=> x_Array.includes(current))||
-            fithCombo.every((current)=> x_Array.includes(current))||
-            sixthCombo.every((current)=> x_Array.includes(current))||
-            seventhCombo.every((current)=> x_Array.includes(current))||
-            eigthCombo.every((current)=> x_Array.includes(current))
-            ){
-                 window.alert("x is the winner");
-             }
-    //      else if(
-    //         firstCombo.every((current)=> !x_Array.includes(current)) ||
-    //         secondCombo.every((current)=> !x_Array.includes(current))||
-    //         thirdCombo.every((current)=> !x_Array.includes(current)) ||
-    //         fourthCombo.every((current)=> !x_Array.includes(current)) ||
-    //         fithCombo.every((current)=> !x_Array.includes(current)) ||
-    //         sixthCombo.every((current)=> !x_Array.includes(current)) ||   
-    //         seventhCombo.every((current)=> !x_Array.includes(current)) ||
-    //         eigthCombo.every((current)=> !x_Array.includes(current)) || 
 
-    //         firstCombo.every((current)=> !o_Array.includes(current)) ||
-    //         secondCombo.every((current)=> !o_Array.includes(current)) ||
-    //         thirdCombo.every((current)=> !o_Array.includes(current)) ||
-    //         fourthCombo.every((current)=> !o_Array.includes(current)) ||
-    //         fithCombo.every((current)=> !o_Array.includes(current)) ||
-    //         sixthCombo.every((current)=> !o_Array.includes(current)) ||   
-    //         seventhCombo.every((current)=> !o_Array.includes(current)) ||
-    //         eigthCombo.every((current)=> !o_Array.includes(current)) 
-        
-    //   )
-    // {
+            else if ( xWins(allCombos, x_Array) )
+            {
+                 window.alert("x is the winner ");
+             }
+
+         else if( isGameOver(currentBoard))
+        {
              
-    //         window.alert("Draw")    
-    //   }
+            window.alert("Draw")    
+          }
       
-    
 })
 
 })
